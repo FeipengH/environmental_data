@@ -1,0 +1,26 @@
+{
+    "id": "9DCFAACD",
+    "path": "~/Documents/environmental_data/Labs/lab8.R",
+    "project_path": "Labs/lab8.R",
+    "type": "r_source",
+    "hash": "1184707872",
+    "contents": "",
+    "dirty": false,
+    "created": 1668015307099.0,
+    "source_on_save": false,
+    "relative_order": 8,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "3,0",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1667422803,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1667422803,
+    "read_only": false,
+    "read_only_alternatives": []
+}

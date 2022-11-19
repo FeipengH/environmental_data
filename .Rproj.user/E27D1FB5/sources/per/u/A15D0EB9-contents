@@ -1,0 +1,8 @@
+dat_catrate = read.csv(here("data", "catrate.csv"))
+dat_delomys = read.csv(here("data", "delomys.csv"))
+dat_rope = read.csv(here("data", "rope.csv"))
+head(dat_catrate)
+head(dat_delomys)
+head(dat_rope)
+hist(dat_delomys$body_mass)
+plot(x = dat_delomys$body_length, y = dat_delomys$body_mass, xlab = "body length", ylab = "body mass", main = "body mass and body length of delomys (Feipeng)")

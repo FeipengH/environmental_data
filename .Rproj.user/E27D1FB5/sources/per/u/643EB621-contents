@@ -1,0 +1,11 @@
+data(iris)
+iris$Species
+fit_species = 
+  lm(
+    Sepal.Length ~ Species,
+    data = iris)
+
+virginica = subset (iris, Species == "virginica")
+mean(virginica$Sepal.Length)
+
+citation()

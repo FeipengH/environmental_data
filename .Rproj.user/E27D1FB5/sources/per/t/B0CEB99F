@@ -1,0 +1,28 @@
+{
+    "id": "B0CEB99F",
+    "path": "~/Documents/environmental_data/lab10.R",
+    "project_path": "lab10.R",
+    "type": "r_source",
+    "hash": "1134673026",
+    "contents": "",
+    "dirty": false,
+    "created": 1668620130133.0,
+    "source_on_save": false,
+    "relative_order": 14,
+    "properties": {
+        "tempName": "Untitled8",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "79,27",
+        "scrollLine": "68",
+        "notebook_format": "word_document"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1668630617,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1668630617930,
+    "read_only": false,
+    "read_only_alternatives": []
+}
