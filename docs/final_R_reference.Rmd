@@ -1,0 +1,181 @@
+---
+title: "R Reference Guide"
+author: "Feipeng Huang"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Loading Data and Packages
+Load the here and palmerpenguins packages
+```{R}
+library(here)
+require(here)
+library(palmerpenguins)
+require(palmerpenguins)
+```
+Use the 2021 ginkgo data to create a data.frame called ginkgo
+```{R}
+ginkgo = read.csv(here("data", "ginkgo_data_2022.csv"))
+```
+## Data Structures
+The function c() combines or concatenates its arguments into a vector (a 1-dimensional data structure consisting of 1 or more elements).  
+All of the elements must be of the same type.  
+I can’t combine character and numeric types in the same call to c()  
+Here’s two examples using numeric and character data types:  
+```{R}
+## Create a vector of numbers:
+num_vec  = c(1, 4, 8, 9, 13)
+```
+```{R}
+## Create a vector of characters:
+char_vec = c("a", "fish", "data is cool")
+```
+I can show the contents of a vector by typing the name of the vector, or using the print() function.
+```{R}
+## Typing the name of the vector into the console prints the contents
+num_vec
+```
+```{R}
+## The print() function accomplishes the same task:
+print(char_vec)
+```
+The length of num_vec
+```{R}
+length(num_vec)
+```
+A **matrix** must contain the same data type  
+A matrix with 2 rows and 4 columns that contain the number 1 to 8, filled by row
+```{R}
+matrix(1:8, nrow = 2, ncol = 4, byrow = TRUE)
+```
+filled by columns  
+```{R}
+matrix(1:8, nrow = 2, ncol = 4, byrow = FALSE)
+```
+A **data frame** can contain different data types  
+A data frame with Hudsonian Godwit chick ID and mass (g)
+```{R}
+ID = c("H38", "H88", "H79", "H15")
+mass = c(25, 24, 22, 24)
+HUGO_mass = data.frame(ID, mass)
+HUGO_mass
+```
+The number of rows in ginkgo data.frame
+```{R}
+nrow(ginkgo)
+```
+The number of columns in ginkgo data.frame
+```{R}
+ncol(ginkgo)
+```
+The dimension of ginkgo data.frame
+```{R}
+dim(ginkgo)
+```
+## Subsetting
+Subset by **name**
+```{R}
+## select site_id column in ginkgo data.frame
+ginkgo$site_id
+```
+Subset by **position**
+```{R}
+## select first row of the ginkgo data
+ginkgo[1,]
+## select the element in row 2, column 3
+ginkgo[2,3]
+## select the 3rd column of the ginkgo data
+ginkgo[,3]
+```
+Retrieve all the data for Adelie penguins (in the species column) from the peuguins dataset
+```{R}
+Adelie = subset(penguins, species == "Adelie")
+```
+## Numerical Data Exploration
+Summary of the ginkgo data
+```{R}
+summary(ginkgo)
+```
+Mean of ginkgo petiole length
+```{R}
+mean(ginkgo$petiole_length)
+```
+Standard deviation of ginkgo petiole length
+```{R}
+sd(ginkgo$petiole_length)
+```
+**Use na.rm = TRUE to exclude NA values if needed**
+
+## Graphical Data Exploration
+**Scatterplot**
+```{R}
+## use col to set point color
+## use pch to set point shape
+## use cex to set point size
+## use main to set title
+## use xlab and ylab to set x-axis and y-axis labels
+## use xlim and ylim to set x-axis and y-axis limits
+plot(max_width ~ max_depth, data = ginkgo, col = 4, pch = 1, cex = 0.5, main = "Scatterplot of max leaf depth (x) and max leaf width (y)", xlab = "Max leaf depth (mm)", ylab = "Max leaf width (mm)", xlim = c(20,130), ylim = c(20,150))
+```
+
+**Histogram**
+```{R}
+## Use breaks to set the start and end points of each bin
+hist(penguins$flipper_length_mm, breaks = seq(170, 235, by = 5), main = "Histogram of penguin flipper lengths", xlab = "Flipper length (mm)")
+```
+
+**Boxplot**
+```{R}
+boxplot(ginkgo$petiole_length, main = "Boxplot of ginkgo petiole lengths", ylab = "Petiole length (mm)")
+```
+```{R}
+boxplot(petiole_length ~ seeds_present, data = ginkgo, main = "Conditional boxplot of ginkgo petiole lengths by seed presence", xlab = "Seed presence", ylab = "Petiole length (mm)")
+```
+```{R}
+par(mfrow = c(2, 2)) ## 4-panel figure arranged in a 2 by 2 grid
+hist(Adelie$bill_length_mm, main = "Adelie bill length", xlab = "Bill length (mm)")
+hist(Adelie$bill_depth_mm, main = "Adelie bill depth", xlab = "Bill depth (mm)")
+hist(Adelie$flipper_length_mm, main = "Adelie flipper length", xlab = "Flipper length (mm)")
+hist(Adelie$body_mass_g, main = "Adelie body mass", xlab = "Body mass (g)")
+```
+
+## Distribution Functions  
+**Normal Distribution**  
+Example: standard normal, mean = 0, sd = 1  
+*Probability Density Function: relative likelihood of x*
+```{R}
+## The probability of observing a value of 0.5
+dnorm(0.5, mean = 0, sd = 1)
+```
+*Cumulative Density Function: likelihood of x or smaller*
+```{R}
+## The probability of observing a value of 0.5 or less
+pnorm(0.5, mean = 0, sd = 1)
+```
+*Quantile Function*
+```{R}
+## 5th percentile
+qnorm(0.05, mean = 0, sd = 1)
+## 5% chance that the value is lower than -1.644854
+```
+**Binomial Distribution**  
+Example: n = 10 (number of eggs in a clutch), p = 0.58 (hatching probability)  
+*Probability Density Function: relative likelihood of x*
+```{R}
+## The probability of observing 5 hatches
+dbinom(5, size = 10, p = 0.58)
+```
+*Cumulative Density Function: likelihood of x or smaller*
+```{R}
+## The probability of observing 5 or fewer hatches
+pbinom(5, size = 10, p = 0.58)
+```
+*Quantile Function*
+```{R}
+## 90th percentile
+qbinom(0.9, size = 10, p = 0.58)
+## 90% chance that the number of hatches is lower than 9
+```

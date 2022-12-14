@@ -1,3 +1,0 @@
-data <- read.csv("/Users/stonehuang/Documents/HUGO_2022/insect_biomass_2019.csv")
-head(data)
-aggregate(data$Biomass_Total, by = list(data$TRAP, data$TRANSECT, data$TYPE, data$DATE.SET), sum)

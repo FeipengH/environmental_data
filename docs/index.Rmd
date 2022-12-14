@@ -1,7 +1,6 @@
 ---
 title: "Feipeng's Project Homepage"
 output: html_document
-date: "2022-11-19"
 ---
 
 ```{r setup, include=FALSE}
@@ -9,3 +8,5 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 Welcome to Feipeng's class page!
+
+[Final Project: R Reference Guide](final_R_reference.html)
